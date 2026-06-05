@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Codes QR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Générateur de Codes QR</h1>
+            <p>Uploadez une image ou un PDF pour générer un code QR</p>
+        </header>
+
+        <main>
+            <!-- Section Upload -->
+            <section class="upload-section">
+                <div class="upload-box" id="dropZone">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <h3>Déposez votre fichier ici</h3>
+                    <p>ou cliquez pour sélectionner</p>
+                    <input type="file" id="fileInput" accept="image/*,.pdf" multiple>
+                </div>
+                <button id="uploadBtn" class="btn btn-primary" disabled>Uploader</button>
+            </section>
+
+            <!-- Progress Bar -->
+            <div id="progressContainer" class="progress-container hidden">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p id="progressText">Chargement en cours...</p>
+            </div>
+
+            <!-- Messages -->
+            <div id="messageContainer" class="message-container"></div>
+
+            <!-- Résultats -->
+            <section id="resultsSection" class="results-section hidden">
+                <h2>📊 Résultats de vos uploads</h2>
+                <div id="resultsList" class="results-list"></div>
+            </section>
+
+            <!-- Historique -->
+            <section class="history-section">
+                <h2>📜 Historique des uploads</h2>
+                <button id="refreshBtn" class="btn btn-secondary">Rafraîchir</button>
+                <div id="historyList" class="history-list"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Redirection QR vers: <a href="https://e-impots.gouv.ci/" target="_blank">e-impots.gouv.ci</a></p>
+            <p>&copy; 2024 Générateur QR - Tous droits réservés</p>
+        </footer>
+    </div>
+
+    <!-- Modal pour afficher le QR code -->
+    <div id="qrModal" class="modal hidden">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>Code QR généré</h2>
+            <div class="modal-body">
+                <img id="qrImage" src="" alt="QR Code">
+                <p id="qrInfo"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="downloadQrBtn" class="btn btn-primary">Télécharger le QR</button>
+                <button id="closeModalBtn" class="btn btn-secondary">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
